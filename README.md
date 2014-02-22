@@ -1,21 +1,52 @@
-## Laravel PHP Framework
+REST API
+=========
 
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/version.png)](https://packagist.org/packages/laravel/framework) [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.png)](https://packagist.org/packages/laravel/framework) [![Build Status](https://travis-ci.org/laravel/framework.png)](https://travis-ci.org/laravel/framework)
+The code is written on  PSR-2 coding style, the documentation can be found [here]
+The API is built using the laravel framework with the faker library  to generate the data. 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+Requirments
+----
+* PHP > 5.3.7
+* MCrypt PHP Extension
+* The project utilizes Composer to manage it’s dependencies.[website]
+* Provide write permission to app/storage
+* For more information, read http://laravel.com/docs/installation#install-laravel
 
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+Installation
+----
+```sh
+clone the repository
+Configure sqlite from app/config/database.php
+On the document root, run:
+- composer install
+- php artisan migrate
+- php artisan db:seed
+Now run “php artisan serve”. The API is available on  http://localhost:8000
+```
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+Resources
+----
+* Products - http://localhost:8000/products ( GET | POST | PUT | DELETE )
+* Merchants - http://localhost:8000/merchants ( GET | POST )
 
-## Official Documentation
-
-Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
-
-### Contributing To Laravel
-
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Code Structure
+----
+* Configuration : app/config/database.php
+* Routes : app/routes.php
+```sh
+All routes are defined in this file
+``` 
+* Database Migration files 
+    * app/database/migrate
+* Database Seeders
+    * app/database/seed
+* Models
+    * app/models/Product
+    * app/models/Merchant
+* Controllers
+    * app/controllers/APIController
+    * app/controllers/ProductController
+    * app/controllers/MerchantController
+    * 
+[here]:https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
+[website]:https://getcomposer.org/ 
