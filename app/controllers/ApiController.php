@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * The Controller is used to execute REST requests and return results in the form of JSON
+*/ 
 abstract class ApiController extends Controller
 {
     protected $statusCode = 200;
@@ -86,7 +89,7 @@ abstract class ApiController extends Controller
      * @param string $errorCode custom error codes for our API
      * @return mixed
      */
-    protected function respondWithError($message, $errorCode)
+    protected function respondError($message, $errorCode)
     {
         return $this->respond([
             'error' => [
@@ -104,7 +107,7 @@ abstract class ApiController extends Controller
      */
     public function errorNotFound($message = 'Resource Not Found')
     {
-        return $this->setStatusCode(404)->respondWithError($message, 'AINTNOTHINGHERE');
+        return $this->setStatusCode(404)->respondError($message, 'AINTNOTHINGHERE');
     }
 
     /**
@@ -114,7 +117,7 @@ abstract class ApiController extends Controller
      */
     public function errorWrongArgs($message = 'Wrong Arguments')
     {
-        return $this->setStatusCode(400)->respondWithError($message, 'WRONGARGUMENTSBOY');
+        return $this->setStatusCode(400)->respondError($message, 'WRONGARGUMENTSBOY');
     }
 
     /**

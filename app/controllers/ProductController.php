@@ -47,23 +47,23 @@ class ProductController extends ApiController
     	// validate
 		// read more on validation at http://laravel.com/docs/validation
 		$rules = array(
-			'name'         => 'required',
-			'SKU'          => 'required',
-			'description'  => 'required',
-			'price'        => 'required|numeric',
-			'merchant'     => 'required'
+		    'name'         => 'required',
+		    'SKU'          => 'required',
+		    'description'  => 'required',
+		    'price'        => 'required|numeric',
+		    'merchant'     => 'required'
 		);
 
 		$validator = Validator::make(Input::all(), $rules);
 		if ($validator->fails()) {
-			return $this->errorWrongArgs( $validator->messages()->toArray()  );
-				
-		} else {
-			// Time to check if the SKU doesnt exist
-			$count = Product::where('SKU', '=', Input::get('SKU'))->count();
+		    return $this->errorWrongArgs( $validator->messages()->toArray()  );
 
-			if ( $count == 1 ) // it does, throw the user out
-				return $this->errorWrongArgs( "SKU already exists !!!"  );
+		} else {
+		    // Time to check if the SKU doesnt exist
+		    $count = Product::where('SKU', '=', Input::get('SKU'))->count();
+
+	 	    if ( $count == 1 ) // it does, throw the user out
+			    return $this->errorWrongArgs( "SKU already exists !!!"  );
 
 		
 			$product = Product::create( 

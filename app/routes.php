@@ -20,3 +20,7 @@ Route::get('/product/{id}', 'ProductController@show');
 Route::post('/product', 'ProductController@create');
 Route::put('/product/{id}', 'ProductController@save');
 Route::delete('/product/{id}', 'ProductController@remove');
+Route::get('/merchant', 'MerchantController@index');
+Route::get('/merchant/{id}', 'MerchantController@show');
+Route::post('/merchant', 'MerchantController@create');
+
