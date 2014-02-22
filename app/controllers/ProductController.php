@@ -30,6 +30,7 @@ class ProductController extends ApiController
 			return $this->errorWrongArgs( $validator->messages()->toArray()  );
 				
 		} else {
+			// fetching the product
 			$product = Product::find( $id );
 		   
             $product->seller_name  = Input::get('merchant');
@@ -85,15 +86,17 @@ class ProductController extends ApiController
     {
     	
     	$product = Product::find( $id);
-		$product->delete();
-		return $this->respondItem("success");
+        if ($product)
+		  $product->delete();
+
+		return "";
     }
 
     public function transform($item)
     {
     	return array (
     		'product_id'   => $item->id ,
-    		'title'        => $item->name , // name is denoted as title to the outside world
+    		'name'         => $item->title , // name is denoted as title to the outside world
 			'SKU'          => $item->SKU ,
 			'description'  => $item->description ,
 			'price'        => $item->price ,

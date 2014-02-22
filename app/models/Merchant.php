@@ -9,6 +9,6 @@ class Merchant extends Eloquent {
 	 */
 	protected $table = 'merchant';
 
-	protected $fillable = array('name','url');
+	protected $fillable = array('name','url','email');
 
 }

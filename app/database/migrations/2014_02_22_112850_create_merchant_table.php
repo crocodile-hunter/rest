@@ -17,6 +17,7 @@ class CreateMerchantTable extends Migration {
             $table->increments('id');
             $table->string('name');
             $table->string('url');
+            $table->string('email')->unique();
             $table->date('created_at');
             $table->date('updated_at');
         });

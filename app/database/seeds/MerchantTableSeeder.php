@@ -18,6 +18,7 @@ class MerchantTableSeeder extends Seeder {
                 array(
                 'name'  => $faker->company,
                 'url'   => $faker->url,
+                'email'   => $faker->email,
                 
                 )
             );

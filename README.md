@@ -6,9 +6,10 @@ The API is built using the laravel framework with the faker library  to generate
 
 Requirments
 ----
-* PHP > 5.3.7
+* PHP > 5.4
 * MCrypt PHP Extension
-* PHP Openssl extension for composer
+* SQLite PHP Extension
+* Openssl PHP Extension for composer
 * The project utilizes Composer to manage it’s dependencies.[website]
 * Provide write permission to app/storage
 * For more information, read http://laravel.com/docs/installation#install-laravel
@@ -20,7 +21,7 @@ clone the repository
 Configure sqlite from app/config/database.php
 On the document root, run:
 - composer install
-- php artisan migrate --path=app/database/migrations
+- php artisan migrate --path=app/database/migrations, if the result is "Nothing to migrate", then run php artisan migrate:reset
 - php artisan db:seed
 Now run “php artisan serve”. The API is available on  http://localhost:8000
 ```
@@ -28,7 +29,9 @@ Now run “php artisan serve”. The API is available on  http://localhost:8000
 Resources
 ----
 * Products - http://localhost:8000/products ( GET | POST | PUT | DELETE )
+    Fields to save - SKU, name, merchant, description, price
 * Merchants - http://localhost:8000/merchants ( GET | POST )
+    Fields to save - name, website, email
 
 Code Structure
 ----
@@ -54,3 +57,7 @@ All routes are defined in this file
     * 
 [here]:https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
 [website]:https://getcomposer.org/ 
+
+Code Structure
+----
+Run request-test.php to run the method tests. Note, the API does not process JSON as form data. I havent tested it with JSON request objects

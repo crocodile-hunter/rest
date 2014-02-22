@@ -4,14 +4,14 @@ class MerchantController extends ApiController
 {
     public function index()
     {
-        $products = Merchant::take(10)->get();
-        return $this->respondArray($products);
+        $merchant = Merchant::take(10)->get();
+        return $this->respondArray($merchant);
     }
 
     public function show($id)
     {
-        $product = Merchant::find($id);
-        return $this->respondItem($product);
+        $merchant = Merchant::find($id);
+        return $this->respondItem($merchant);
     }
    
 
@@ -21,7 +21,9 @@ class MerchantController extends ApiController
 		// read more on validation at http://laravel.com/docs/validation
 		$rules = array(
 		    'name'         => 'required',
-		    'website'          => 'url'
+		    'website'      => 'required',
+            'email'      => 'required|email|unique:merchant' // validate required and that the string is an email
+
 		);
 
 		$validator = Validator::make(Input::all(), $rules);
@@ -30,14 +32,16 @@ class MerchantController extends ApiController
 
 		} else {
 		    
-			$product = Product::create( 
+			$merchant = Merchant::create( 
                 array(
-                'SKU'          => Input::get('name'),
-                'url'  => Input::get('website')
+                'name'  => Input::get('name'),
+                'url'   => Input::get('website'),
+                'email' => Input::get('email')
+
                 )
             );
-			// return the product data
-            return $this->respondItem($product);
+			// return the merchant data
+            return $this->respondItem($merchant);
 
 		}
     }
@@ -47,7 +51,8 @@ class MerchantController extends ApiController
     	return array (
     		'merchant_id'   => $item->id ,
     		'name'          => $item->name , 
-			'website'       => $item->url 
+			'website'       => $item->url,
+            'email'         => $item->email  
     	);
     }
 
