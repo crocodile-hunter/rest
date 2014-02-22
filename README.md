@@ -45,6 +45,9 @@ All routes are defined in this file
     * app/models/Merchant
 * Controllers
     * app/controllers/APIController
+	```sh
+	All controllers must extend the APIController
+	``` 
     * app/controllers/ProductController
     * app/controllers/MerchantController
     * 
