@@ -8,6 +8,7 @@ Requirments
 ----
 * PHP > 5.3.7
 * MCrypt PHP Extension
+* PHP Openssl extension for composer
 * The project utilizes Composer to manage it’s dependencies.[website]
 * Provide write permission to app/storage
 * For more information, read http://laravel.com/docs/installation#install-laravel
@@ -19,7 +20,7 @@ clone the repository
 Configure sqlite from app/config/database.php
 On the document root, run:
 - composer install
-- php artisan migrate
+- php artisan migrate --path=app/database/migrations
 - php artisan db:seed
 Now run “php artisan serve”. The API is available on  http://localhost:8000
 ```
@@ -46,7 +47,7 @@ All routes are defined in this file
 * Controllers
     * app/controllers/APIController
 	```sh
-	All controllers must extend the APIController
+	All controllers must extend the APIController. it contains some helper methods that can assist with API responses
 	``` 
     * app/controllers/ProductController
     * app/controllers/MerchantController
