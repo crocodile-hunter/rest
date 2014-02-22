@@ -58,6 +58,6 @@ All routes are defined in this file
 [here]:https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
 [website]:https://getcomposer.org/ 
 
-Code Structure
+TEST
 ----
 Run request-test.php to run the method tests. Note, the API does not process JSON as form data. I havent tested it with JSON request objects
